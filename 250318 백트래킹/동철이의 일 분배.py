@@ -1,5 +1,5 @@
-import sys
-sys.stdin = open("input.txt","r")
+# import sys
+# sys.stdin = open("input.txt","r")
 
 def how_tobe_good_worker(row,total_per):
     global greatest_percent
@@ -17,9 +17,10 @@ def how_tobe_good_worker(row,total_per):
     # 재귀
     for i in range(N):
         if not visited[i]:
-            visited[i] = True
-            how_tobe_good_worker(row+1,total_per * each_percent[row][i])
-            visited[i] = False
+            if each_percent[row][i] != 0:
+                visited[i] = True
+                how_tobe_good_worker(row+1,total_per * each_percent[row][i])
+                visited[i] = False
 
 
 
