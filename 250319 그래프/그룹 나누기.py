@@ -29,10 +29,11 @@ def union(x,y):
 # 부모를 타고 가서 대표자를 찾아간다.
 # 찾아가서 리스트의 값을 대표로 바꾸는 과정
 def find_set(x):
-    while parents[x] != x:
-        parents[x] = parents[parents[x]]
-        x = parents[x]
-    return x    
+    if parents[x] == x:
+        return x
+
+    parents[x] = find_set(parents[x])
+    return parents[x]
         
 
 T = int(input())
